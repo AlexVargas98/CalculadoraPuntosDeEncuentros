@@ -18,4 +18,10 @@ public class MainActivity extends AppCompatActivity {
         Intent i = new Intent(this, lista_puntoencuentro.class);
         startActivity(i);
     }
+
+    public void calcular(View v) {
+        Intent i = new Intent(this, calcular_punto_encuentro.class);
+        startActivity(i);
+    }
+
 }
