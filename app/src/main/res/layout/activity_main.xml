@@ -196,4 +196,16 @@
         android:inputType="number"
         app:layout_constraintStart_toEndOf="@+id/tvdistancia"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/bt_formulas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="600dp"
+        android:onClick="formulas"
+        android:text="Formulas"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

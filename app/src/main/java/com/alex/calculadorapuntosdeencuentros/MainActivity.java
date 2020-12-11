@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -33,39 +34,50 @@ public class MainActivity extends AppCompatActivity {
 
         if(validar()){
 
-        String valor1 = velocidad1.getText().toString();
-        String valor2 = velocidad2.getText().toString();
-        String valor3 = distancia_total.getText().toString();
+            String valor1 = velocidad1.getText().toString();
+            String valor2 = velocidad2.getText().toString();
+            String valor3 = distancia_total.getText().toString();
 
-        int velocidad1 = Integer.parseInt(valor1);
-        int velocidad2 = Integer.parseInt(valor2);
-        int distancia = Integer.parseInt(valor3);
+            int velocidad1 = Integer.parseInt(valor1);
+            int velocidad2 = Integer.parseInt(valor2);
+            int distancia = Integer.parseInt(valor3);
 
-        //Calcular TiempoEncuentro
-        int calculartiempo = distancia / (velocidad1 + velocidad2);
-        String resutiempo = String.valueOf(calculartiempo);
-        //Calcular Distancia1
-        int calculardistancia1 = velocidad1 * calculartiempo;
-        String resudistanc1 = String.valueOf(calculardistancia1);
-        //Calculadr Distancia2
-        int calculardistancia2 = velocidad2 * calculartiempo;
-        String resudistanc2 = String.valueOf(calculardistancia2);
+            if(velocidad1 >=0 && velocidad1 <=250 && velocidad2 >=0 && velocidad2 <=250 && distancia >=0 && distancia <=1000 ){
+
+                //Calcular TiempoEncuentro
+                int calculartiempo = distancia / (velocidad1 + velocidad2);
+                String resutiempo = String.valueOf(calculartiempo);
+                //Calcular Distancia1
+                int calculardistancia1 = velocidad1 * calculartiempo;
+                String resudistanc1 = String.valueOf(calculardistancia1);
+                //Calculadr Distancia2
+                int calculardistancia2 = velocidad2 * calculartiempo;
+                String resudistanc2 = String.valueOf(calculardistancia2);
 
 
-        //Enviar datos a otro activity
-        Intent i = new Intent(MainActivity.this, calcular_punto_encuentro.class);
-        i.putExtra("tiempo_punto_encuentro", resutiempo);
-        i.putExtra("distancia_vehiculo_1", resudistanc1);
-        i.putExtra("distancia_vehiculo_2", resudistanc2);
-        i.putExtra("nombre_vehiculo1", edt1.getText().toString());
-        i.putExtra("nombre_vehiculo2", edt2.getText().toString());
+                //Enviar datos a otro activity
+                Intent i = new Intent(MainActivity.this, calcular_punto_encuentro.class);
+                i.putExtra("tiempo_punto_encuentro", resutiempo);
+                i.putExtra("distancia_vehiculo_1", resudistanc1);
+                i.putExtra("distancia_vehiculo_2", resudistanc2);
+                i.putExtra("nombre_vehiculo1", edt1.getText().toString());
+                i.putExtra("nombre_vehiculo2", edt2.getText().toString());
+                startActivity(i);
 
-        startActivity(i);
+            }else
+            {
+                Toast.makeText(this, "velocidad o distancia no valido, rango de velocidad entre 0 a 250, rando de distancia entre 0 a 1000 ",Toast.LENGTH_LONG).show();
+            }
+
         }
     }
 
     public void lista(View v) {
         Intent i = new Intent(this, lista_puntoencuentro.class);
+        startActivity(i);
+    }
+    public void formulas(View v) {
+        Intent i = new Intent(this, Formulas.class);
         startActivity(i);
     }
 
