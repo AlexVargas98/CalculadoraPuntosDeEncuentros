@@ -53,6 +53,12 @@ public class MainActivity extends AppCompatActivity {
                 //Calculadr Distancia2
                 int calculardistancia2 = velocidad2 * calculartiempo;
                 String resudistanc2 = String.valueOf(calculardistancia2);
+                //Calcular tiempo vehiculo 1
+                int calculartiempovehi1 = distancia/velocidad1;
+                String resutiempovehi1 = String.valueOf(calculartiempovehi1);
+                //Calcular tiempo vehiculo 2
+                int calculartiempovehi2 = distancia/velocidad2;
+                String resutiempovehi2 = String.valueOf(calculartiempovehi2);
 
 
                 //Enviar datos a otro activity
@@ -62,6 +68,8 @@ public class MainActivity extends AppCompatActivity {
                 i.putExtra("distancia_vehiculo_2", resudistanc2);
                 i.putExtra("nombre_vehiculo1", edt1.getText().toString());
                 i.putExtra("nombre_vehiculo2", edt2.getText().toString());
+                i.putExtra("tiempo_vehiculo_1", resutiempovehi1);
+                i.putExtra("tiempo_vehiculo_2", resutiempovehi2);
                 startActivity(i);
 
             }else
