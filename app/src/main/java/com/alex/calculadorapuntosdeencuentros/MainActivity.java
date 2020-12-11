@@ -10,20 +10,29 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
+
     private EditText velocidad1;
     private EditText distancia_total;
     private EditText velocidad2;
     private TextView tiempo_encuentro;
+    private EditText edt1,edt2;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        edt1= (EditText) findViewById(R.id.edt1);
+        edt2= (EditText) findViewById(R.id.edt2);
         velocidad1 = (EditText) findViewById(R.id.edtvelocidad3);
         velocidad2 = (EditText) findViewById(R.id.edtvelocidad4);
         distancia_total = (EditText) findViewById(R.id.edtdistancia);
         tiempo_encuentro = (TextView) findViewById(R.id.tv_tiempototal);
     }
     public void calcularDistancia(View view) {
+
+        if(validar()){
+
         String valor1 = velocidad1.getText().toString();
         String valor2 = velocidad2.getText().toString();
         String valor3 = distancia_total.getText().toString();
@@ -50,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
         i.putExtra("distancia_vehiculo_2", resudistanc2);
 
         startActivity(i);
+        }
     }
 
     public void lista(View v) {
@@ -60,6 +70,39 @@ public class MainActivity extends AppCompatActivity {
     public void calcular(View v) {
         Intent i = new Intent(this, calcular_punto_encuentro.class);
         startActivity(i);
+    }
+
+
+    public boolean validar (){
+        boolean retorno=true;
+        String nombre1=edt1.getText().toString();
+        String nombre2=edt2.getText().toString();
+        String velo1=velocidad1.getText().toString();
+        String velo2=velocidad2.getText().toString();
+        String dist= distancia_total.getText().toString();
+
+        if(nombre1.isEmpty()){
+            edt1.setError("campo vacio");
+            retorno=false;
+        }
+        if(nombre2.isEmpty()){
+            edt2.setError("campo vacio");
+            retorno=false;
+        }
+        if(velo1.isEmpty()){
+            velocidad1.setError("campo vacio");
+            retorno=false;
+        }
+        if(velo2.isEmpty()){
+            velocidad2.setError("campo vacio");
+            retorno=false;
+        }
+        if(dist.isEmpty()){
+            distancia_total.setError("campo vacio");
+            retorno=false;
+        }
+
+        return retorno;
     }
 
 }
