@@ -57,6 +57,8 @@ public class MainActivity extends AppCompatActivity {
         i.putExtra("tiempo_punto_encuentro", resutiempo);
         i.putExtra("distancia_vehiculo_1", resudistanc1);
         i.putExtra("distancia_vehiculo_2", resudistanc2);
+        i.putExtra("nombre_vehiculo1", edt1.getText().toString());
+        i.putExtra("nombre_vehiculo2", edt2.getText().toString());
 
         startActivity(i);
         }

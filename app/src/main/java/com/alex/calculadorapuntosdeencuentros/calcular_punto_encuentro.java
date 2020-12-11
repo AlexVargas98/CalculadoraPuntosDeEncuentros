@@ -9,6 +9,8 @@ public class calcular_punto_encuentro extends AppCompatActivity {
     private TextView resultado_tiempo_encuentro;
     private TextView resultado_distancia1;
     private TextView resultado_distancia2;
+    private TextView vehiculo1;
+    private TextView vehiculo2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,6 +19,8 @@ public class calcular_punto_encuentro extends AppCompatActivity {
         resultado_tiempo_encuentro = (TextView) findViewById(R.id.tv_tiempototal);
         resultado_distancia1 = (TextView) findViewById(R.id.tv_distancia1);
         resultado_distancia2 = (TextView) findViewById(R.id.tv_distancia2);
+        vehiculo1 = (TextView) findViewById(R.id.tv_vehiculo1);
+        vehiculo2 = (TextView) findViewById(R.id.tv_vehiculo2);
 
 
         //Calcular Círculo
@@ -26,6 +30,10 @@ public class calcular_punto_encuentro extends AppCompatActivity {
         resultado_distancia1.setText(distancia1);
         String distancia2 = getIntent().getStringExtra("distancia_vehiculo_2");
         resultado_distancia2.setText(distancia2);
+        String nombre1 = getIntent().getStringExtra("nombre_vehiculo1");
+        vehiculo1.setText(nombre1);
+        String nombre2 = getIntent().getStringExtra("nombre_vehiculo2");
+        vehiculo2.setText(nombre2);
 
     }
 }
